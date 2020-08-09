@@ -77,6 +77,6 @@ module.exports.createSession = function(req, res){
 
 //Sign out
 module.exports.signout = function(req, res){
-    res.cookie('user_id', null);
+    res.clearCookie('user_id');
     return res.redirect('/users/sign-in');
 }
