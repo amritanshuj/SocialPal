@@ -1,3 +1,8 @@
 <h1>
     User Page | Profile
 </h1>
+<p>Name: <%= user.name %></p>
+<p>Email: <%= user.email %></p>
+<form action="/users/sign-out" method="GET">
+    <input type="submit" value="Sign Out">
+</form>
