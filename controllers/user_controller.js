@@ -8,6 +8,10 @@ module.exports.profile = function(req, res){
 
 //Render sign-up page
 module.exports.signup = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_up', {
         title: "SocialPal | Sign Up"
     })
@@ -15,6 +19,10 @@ module.exports.signup = function(req, res){
 
 //Render sign-in page
 module.exports.signin = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_in', {
         title: "SocialPal | Sign In"
     })
@@ -43,5 +51,10 @@ module.exports.create = function(req, res){
 }
 //Sign In and create a session for the user
 module.exports.createSession = function(req, res){
-    //Todo
+    return res.redirect('/');
+}
+
+module.exports.destroySession = function(req, res){
+    req.logout();
+    return res.redirect('/');
 }
