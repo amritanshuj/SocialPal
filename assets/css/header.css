@@ -1,0 +1,18 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  height: 2rem; }
+  header #sign-options li {
+    display: inline;
+    font-size: small;
+    color: white;
+    font-size: small;
+    margin-left: 10px; }
+    header #sign-options li a {
+      color: white; }
+      header #sign-options li a i {
+        margin: 0.7vw; }

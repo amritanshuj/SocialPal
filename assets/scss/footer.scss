@@ -1,0 +1,20 @@
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(54, 51, 255);
+    color: white;
+    padding: 5px;
+    height: 1.4rem;
+    width: 100vw;
+    font-size: x-small;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    #footer-options li{
+      display: inline;
+      margin-left: 10px;
+      a{
+        color: rgb(80, 255, 27);
+      }
+    }
+  }

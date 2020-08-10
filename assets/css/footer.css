@@ -1,0 +1,17 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #3633ff;
+  color: white;
+  padding: 5px;
+  height: 1.4rem;
+  width: 100vw;
+  font-size: x-small;
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box; }
+  footer #footer-options li {
+    display: inline;
+    margin-left: 10px; }
+    footer #footer-options li a {
+      color: #50ff1b; }
