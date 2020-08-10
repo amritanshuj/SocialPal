@@ -14,4 +14,4 @@ const postSchema = new mongoose.Schema({
 });
 
 const Post = mongoose.model('Post', postSchema);
-modules.exports = Post;
+module.exports = Post;
