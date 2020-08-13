@@ -3,3 +3,5 @@ body {
   body #layout-main {
     height: 100%;
     margin-top: 5vh; }
+  body #flash {
+    margin-top: 50px; }

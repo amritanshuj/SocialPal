@@ -26,6 +26,7 @@ module.exports.signup = function(req, res){
         return res.redirect('/users/profile');
     }
 
+    req.flash('success', 'Account created successfully!');
     return res.render('user_sign_up', {
         title: "SocialPal | Sign Up"
     })
@@ -65,11 +66,13 @@ module.exports.create = function(req, res){
 }
 //Sign In and create a session for the user
 module.exports.createSession = function(req, res){
+    req.flash('success', 'Logged In Successfully!');
     return res.redirect('/');
 }
 
 module.exports.destroySession = function(req, res){
     req.logout();
+    req.flash('success', 'You have logged out!');
     return res.redirect('/');
 }
 

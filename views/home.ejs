@@ -1,32 +1,37 @@
-<h1>
-    SocialPal | <%= title %>
-</h1>
-<section id="feed-posts">
-    <% if(locals.user){ %>
-    <h4>Posts</h4>
-    <form action="/posts/create" id="new-post-form" method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="What's on your mind, <%= locals.user.name%>?" required></textarea>
-        <input type="submit" value="Post">
-    </form>
+<link rel="stylesheet" href="/css/home.css">
+
+<div id="home-container">
+    <section id="feed-posts">
+        <% if(locals.user){ %>
+        <h4>Posts</h4>
+        <form action="/posts/create" id="new-post-form" method="POST">
+            <textarea name="content" cols="30" rows="3" placeholder="What's on your mind, <%= locals.user.name%>?" required></textarea>
+            <input type="submit" value="Post">
+        </form>
+        
     
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts){ %>
+                    <%- include('_post') %>            
+                <%} %>
+            </ul>
+        </div>
+        <% } else{ %>
+            <p>Welcome to SocialPal! Sign In/Sign Up to continue.</p>
+        <%} %>
+    </section>
+        
+    <section id="user-friends">
+        <h4>Friends</h4>
+        <%for(u of all_users){ %>
+            <p>
+                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+            </p>
+        <% } %>
+    </section>
+</div>
 
-    <div id="posts-list-container">
-        <ul">
-            <% for(post of posts){ %>
-                <%- include('_post') %>            
-            <%} %>
-        </ul>
-    </div>
-    <% } else{ %>
-        <p>Welcome to SocialPal! Sign In/Sign Up to continue.</p>
-    <%} %>
-</section>
+<script src="/js/home_post_comments.js" ></script>
+<script src="/js/home_posts.js"></script>
 
-<section id="user-friends">
-    <h4>Friends</h4>
-    <%for(u of all_users){ %>
-        <p>
-            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-        </p>
-    <% } %>
-</section>

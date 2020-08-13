@@ -2,10 +2,15 @@
     <h5><i class="fas fa-user small"></i> SocialPal</h5>
 
     <ul id="sign-options" style="list-style: none;">
+            <li>
+                <a href="/">
+                    <i class="fas fa-home small"></i>Home
+                </a>
+            </li>
         <% if(locals.user){ %>
             <li>
                 <a href="/users/profile/<%= user.id %>">
-                    <%= user.name %>
+                    <i class="fas fa-user-circle small"></i><%= user.name %>
                 </a>
             </li>
             <li>
