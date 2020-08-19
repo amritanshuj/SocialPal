@@ -1,11 +1,57 @@
 body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   margin: 0;
   #layout-main{
     height: 100%;
     margin-top: 5vh;
+    
   }
   #flash{
     margin-top: 50px;
   }
-  
+  #bg{
+    margin-left: -55px;
+    margin-top: -33px;
+    background-position: contain;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    
+    position: fixed;
+    #cover{
+      height: 90vh;
+      width:100vw;
+    }
+  }
+
+  #foot{
+    display: flex;
+    width: 100vw;
+    
+    #foot-options{
+      margin-left: 15vw;
+      list-style-type: none;
+
+      button{
+        display: inline-block;
+        margin-left: 10px;
+        border: 0;
+      }    
+      #dark{
+        background-color: black;
+        color: white;
+      }
+      #red{
+        background-color: rgb(230, 10, 10);
+        color: white;
+      }
+      #grey{
+        background-color: rgb(245, 245, 245);
+      }
+      #light{
+        background-color: white;
+      }
+    }
+  }
 }

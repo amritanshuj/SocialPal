@@ -1,9 +1,46 @@
 <link rel="stylesheet" href="/css/home.css">
 
-<div id="home-container">
+<div id="home-container" class="container-fluid">
+    <% if(locals.user){ %>
+    <div id="account">
+        <div id="card" class="inner card ml-3">
+            <!-- <div class="cover-picture">
+            </div> -->
+            
+            <div class="user-pic">
+                <% if(locals.user.avatar){ %>
+                <img class="rounded-circle mx-5" width="70" height="70" src="<%= locals.user.avatar %>" alt="">
+                <% } else{ %>
+                <img class="rounded-circle mx-5" width="70" src="" alt="add image">
+                <% } %>
+            </div>
+            <div class="card-body text-capitalize">
+                <h5 class="card-title text-center"><%= locals.user.name %></h5>
+            </div>
+        
+            <div class="text-muted small friendlist">
+                <span style="font-size: smaller;">
+                    Friends: 
+                </span>
+                <span class="length" style="font-size: smaller;">
+                    <%= locals.user.friendships.length %>
+                </span>
+            </div>
+            <div class="text-muted small friendlist">
+                <span style="font-size: smaller;">
+                    Email:
+                </span>
+                <span class="length" style="font-size: smaller;">
+                    <%= locals.user.email%>
+                </span>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
     <section id="feed-posts">
         <% if(locals.user){ %>
-        <h4>Posts</h4>
+        <h6>POSTS</h6>
         <form action="/posts/create" id="new-post-form" method="POST">
             <textarea name="content" cols="30" rows="3" placeholder="What's on your mind, <%= locals.user.name%>?" required></textarea>
             <input type="submit" value="Post">
@@ -17,21 +54,65 @@
                 <%} %>
             </ul>
         </div>
-        <% } else{ %>
-            <p>Welcome to SocialPal! Sign In/Sign Up to continue.</p>
-        <%} %>
     </section>
-        
+
     <section id="user-friends">
-        <h4>Friends</h4>
-        <%for(u of all_users){ %>
-            <p>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </p>
-        <% } %>
+        <div class="inner">
+            <div class="friends list-group">
+                <h6>FRIENDS</h6>
+                <div class="box-size">
+                    <% for(let friends of friendships){ %>
+                    <p class="list-group-item">
+                        <% if(friends.avatar){ %>
+                        <img class="rounded-circle" width="45" height="45" src="<%= friends.avatar %>" alt="">
+                        <% } else{ %>
+                        <img class="rounded-circle" width="45" src="" alt="Add Img">
+                        <% } %>
+                        <a style="font-size: smaller;" class="ml-2" href="/users/profile/<%= friends.id %>"> <%= friends.name %> </a>
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+            <br>
+            <div class="">
+                <h6>ALL USERS</h6>
+                <div class="box-size">
+                    <% for(u of all_users){%>
+                    <p class="list-group-item">
+                        <% if(u.avatar){ %>
+                        <img class="rounded-circle" width="45" height="45" src="<%= u.avatar %>" alt="">
+                        <% } else{ %>
+                        <img class="rounded-circle" width="45" src="" alt="Add Img">
+                        <% } %>
+                        <a style="font-size: smaller;" class="ml-2" href="/users/profile/<%= u.id %>"> <%= u.name %></a>
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <% } else{ %>
+        <br>
+        <div id="bg">
+            <img id="cover" src="images/cover_1.jpg" alt="Cant load">
+        </div>
+        <div id="text">
+        <h6>Welcome to SocialPal! Sign In/Sign Up to continue.</h6>
+        </div>
+    <%} %>
+    
 </div>
 
 <script src="/js/home_post_comments.js" ></script>
 <script src="/js/home_posts.js"></script>
+
+<!-- import the script file for toggle likes, also run it over for the already present posts and comments on the page --> 
+<script src="js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
 

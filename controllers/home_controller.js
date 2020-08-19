@@ -9,16 +9,22 @@ module.exports.home = async function(req, res){
         .populate({
             path: 'comments',
             populate: {
-                path: 'user'
+                path: 'user likes'
             }
-        });
+        }).populate('likes');
 
         let users = await User.find({});
 
-            return res.render('home', {
+        let friends;
+        if(req.user){
+         friends = await User.find({friendships: req.user.id})
+        }
+
+        return res.render('home', {
             title: "Home",
             posts: posts,
-            all_users: users
+            all_users: users,
+            friendships: friends
         });
 
     } catch(err){

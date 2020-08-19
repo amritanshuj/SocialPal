@@ -1,10 +1,11 @@
 footer{
     display: flex;
     flex-direction: row;
-    background-color: rgb(54, 51, 255);
+    background-color: rgb(43, 43, 231);
+    background-image: linear-gradient(to right, rgb(44, 58, 253), rgb(55, 58, 236));
     color: white;
-    padding: 5px;
-    height: 1.2rem;
+    padding: 2.5px;
+    height: 1.25rem;
     width: 100vw;
     font-size: xx-small;
     position: fixed;

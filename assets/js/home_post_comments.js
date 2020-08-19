@@ -41,7 +41,7 @@ class PostComments{
                         text: "Comment published!",
                         type: 'success',
                         layout: 'topRight',
-                        timeout: 1500
+                        timeout: 1000
                         
                     }).show();
 
@@ -59,7 +59,6 @@ class PostComments{
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${ comment._id }">
                         <p>
-                            
                             <small>
                                 <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
                             </small>
@@ -68,6 +67,11 @@ class PostComments{
                             <br>
                             <small>
                                 ${comment.user.name}
+                            </small>
+                            <small>
+                            <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=$(comment._id)&type=Comment">
+                                0 <i class="fas fa-thumbs-up small"></i>
+                            </a>
                             </small>
                         </p>    
 

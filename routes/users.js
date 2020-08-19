@@ -3,9 +3,13 @@ const router = express.Router();
 const passport = require('passport');
 
 const usersController = require('../controllers/user_controller');
+const friendsController = require('../controllers/friendship_controller');
 
 router.get('/profile/:id', passport.checkAuthentication, usersController.profile); //profile page will only open if signed in, if not then sign in page opens
 router.post('/update/:id', passport.checkAuthentication, usersController.update); 
+
+router.get('/createfriendship/:id', passport.checkAuthentication,friendsController.createFriensdhip);
+router.get('/destroyfriendship/:id', passport.checkAuthentication,friendsController.destroyFriendship);
 
 router.get('/sign-up', usersController.signup);
 router.get('/sign-in', usersController.signin);

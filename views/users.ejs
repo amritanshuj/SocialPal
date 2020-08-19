@@ -11,9 +11,42 @@
         <input type="file" name="avatar" placeholder="Profile Picture">
         <input type="submit" value="Update">
     </form>
-
 <% } else{ %>
     <!-- else show only the profile info -->
     <p>Welcome to <%= profile_user.name %>'s profile page!</p>
     <p>Contact: <%= profile_user.email %></p>
+
+    <span class="side-button small">
+        <!-- if friend doesn't exist then shows create friend -->
+        <% if(!user.friendships.includes(profile_user.id)){ %>
+        <a href="/users/createfriendship/<%= profile_user._id %>">
+          <button class="friends">
+            <i class="fas fa-user-friends"></i>
+            Add Friend
+          </button>
+        </a>
+        <!-- otherwise shows the option of remove friends -->
+        <% } else{ %> 
+        <div class="dropdown">
+          <button type="button" id="friends" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-check"></i>
+            Friends
+            &ensp;
+            <i class="fas fa-caret-down"></i>
+          </button>
+          <button type="button">
+            <i class="fas fa-comments"></i>
+            Message
+          </button>
+          <div class="dropdown-menu" aria-labelledby="friends">
+            <a href="/users/destroyfriendship/<%= profile_user._id %>" class="dropdown-item">
+              Unfriend
+            </a>
+          </div>
+        </div>
+        <% } %>
+        
+      </span>
+
 <% } %>
+

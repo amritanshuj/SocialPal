@@ -1,7 +1,40 @@
 body {
+  background-color: black;
+  color: white;
   margin: 0; }
   body #layout-main {
     height: 100%;
     margin-top: 5vh; }
   body #flash {
     margin-top: 50px; }
+  body #bg {
+    margin-left: -55px;
+    margin-top: -33px;
+    background-position: contain;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed; }
+    body #bg #cover {
+      height: 90vh;
+      width: 100vw; }
+  body #foot {
+    display: flex;
+    width: 100vw; }
+    body #foot #foot-options {
+      margin-left: 15vw;
+      list-style-type: none; }
+      body #foot #foot-options button {
+        display: inline-block;
+        margin-left: 10px;
+        border: 0; }
+      body #foot #foot-options #dark {
+        background-color: black;
+        color: white; }
+      body #foot #foot-options #red {
+        background-color: #e60a0a;
+        color: white; }
+      body #foot #foot-options #grey {
+        background-color: whitesmoke; }
+      body #foot #foot-options #light {
+        background-color: white; }

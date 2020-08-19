@@ -12,8 +12,7 @@ exports.newComment = (comment)=>{
         if(err){
             console.log('Error in sending mail', err);
             return;
-        }
-
+        } 
        // console.log('Message sent', info);
         return;
     })
