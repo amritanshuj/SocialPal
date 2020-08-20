@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 
 <div id="home-container" class="container-fluid">
     <% if(locals.user){ %>
@@ -91,6 +92,8 @@
             </div>
         </div>
     </section>
+    <%- include('_chat_box') -%>
+</div>
 
     <% } else{ %>
         <br>
@@ -98,11 +101,11 @@
             <img id="cover" src="images/cover_1.jpg" alt="Cant load">
         </div>
         <div id="text">
-        <h6>Welcome to SocialPal! Sign In/Sign Up to continue.</h6>
+        <p>Welcome to SocialPal! Sign In/Sign Up to continue.</p>
         </div>
     <%} %>
     
-</div>
+
 
 <script src="/js/home_post_comments.js" ></script>
 <script src="/js/home_posts.js"></script>
@@ -115,4 +118,10 @@
         let toggleLike = new ToggleLike(self);
     });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if(locals.user){ %>
+<script>
+    new chatEngine('user-chat-box', '<%= locals.user.name %>', '<%= locals.user.email %>')
+</script>
+<% } %>

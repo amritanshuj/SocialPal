@@ -10,17 +10,20 @@ header{
     position: fixed;
     top: 0;
     width: 100vw;
-    #sign-options li{
-      display: inline;
-      font-size: small;
-      color: white;
-      font-size: small;
-     // margin-left: 1em;
-      margin-right: 1em;
-      a{
+    #sign-options{
+    
+      li{
+        display: inline;
+        font-size: small;
         color: white;
-        i{
-            margin: 0.3vw;
+        font-size: small;
+       // margin-left: 1em;
+        margin-right: 1em;
+        a{
+          color: white;
+          i{
+              margin: 0.3vw;
+          }
         }
       }
     }

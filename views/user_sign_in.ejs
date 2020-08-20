@@ -1,11 +1,28 @@
+<br>
+<div id="sign">
+<h4 style="color: black">&ensp;SocialPal | Sign In</h4> 
+<div>    
+    <div class="col-md-5">                    
+            <div>    
+                <form action="/users/create-session" method="POST">
+                        
+                    <div style="margin-bottom: 25px">
+                        <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                    </div>
 
-<h1>SocialPal | Sign In</h1>
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Sign In">
-</form>
+                    <div style="margin-bottom: 25px">
+                        <input type="password" name="password" placeholder="Your Password" required class="form-control">
+                    </div>
 
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+                    <div class="col-sm-10 controls">
+                        <input type="submit" class="btn btn-success" value="Sign In">&ensp;
+                        <a href="/users/auth/google">Google Sign In/Sign Up</a>
+                    </div>
+                        
+                </form>     
+            </div>                     
+        </div>  
+    </div>
+    
+</div>
+</div>

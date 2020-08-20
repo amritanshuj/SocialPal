@@ -1,6 +1,7 @@
 <footer>
     <div id="foot">
         <span><a href="https://www.linkedin.com/in/amritanshu-jha/" target="_blank">@Amritanshu Jha</a>&nbsp; All Rights Reserved(2020)</span>
+        <% if(locals.user){ %>
         <ul id="foot-options">
             <span>Choose background:</span>
             <button id="dark"><li>Dark</li></button>
@@ -8,6 +9,7 @@
             <button id="grey"><li>Grey</li></button>
             <button id="light"><li>Light</li></button>
         </ul>
+        <% } %>
     </div>
 </footer>
 

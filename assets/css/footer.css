@@ -5,9 +5,9 @@ footer {
   background-image: linear-gradient(to right, #2c3afd, #373aec);
   color: white;
   padding: 2.5px;
-  height: 1.25rem;
+  height: 1.35rem;
   width: 100vw;
-  font-size: xx-small;
+  font-size: x-small;
   position: fixed;
   bottom: 0;
   box-sizing: border-box; }

@@ -1,52 +1,225 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 
-<img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+<div class="user-profile card">
+  <div class="cover-image">
+    <!-- add a cover image functionality -->
+  </div>
 
-<% if(user.id == profile_user.id){ %>
-    <!-- If user matches then show update form -->
-    <form action="/users/update/<%= profile_user.id%>" enctype="multipart/form-data" method="POST">
-        <input type="text" name="name" placeholder="Your Name" value="<% profile_user.name %>" required>
-        <input type="text" name="email" placeholder="Your Email" value="<% profile_user.email %>" required>
-        
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <input type="submit" value="Update">
-    </form>
-<% } else{ %>
-    <!-- else show only the profile info -->
-    <p>Welcome to <%= profile_user.name %>'s profile page!</p>
-    <p>Contact: <%= profile_user.email %></p>
+  <div class="profile-picture">
+    <% if(profile_users.avatar){ %>
+    <img class="rounded-circle" width="140" src="<%= profile_users.avatar %>" alt="">
+    <% } else{ %>
+    <img class="rounded-circle" width="140" src='/images/no_profile.png' alt="">
+    <% } %>
+  </div>
+  <span class="name">
+    <%= profile_users.name %>
+  </span>
 
+  <% if(user.id == profile_users.id){ %>
     <span class="side-button small">
-        <!-- if friend doesn't exist then shows create friend -->
-        <% if(!user.friendships.includes(profile_user.id)){ %>
-        <a href="/users/createfriendship/<%= profile_user._id %>">
-          <button class="friends">
-            <i class="fas fa-user-friends"></i>
-            Add Friend
-          </button>
-        </a>
-        <!-- otherwise shows the option of remove friends -->
-        <% } else{ %> 
-        <div class="dropdown">
-          <button type="button" id="friends" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-check"></i>
-            Friends
-            &ensp;
-            <i class="fas fa-caret-down"></i>
-          </button>
-          <button type="button">
-            <i class="fas fa-comments"></i>
-            Message
-          </button>
-          <div class="dropdown-menu" aria-labelledby="friends">
-            <a href="/users/destroyfriendship/<%= profile_user._id %>" class="dropdown-item">
-              Unfriend
-            </a>
+      <button data-toggle="modal" data-target="#edit">
+        <i class="fas fa-pen"></i>
+        Edit Profile
+      </button>
+      <div class="modal fade" id="edit" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Information</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="/users/update/<%= profile_users.id %>" method="POST" enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="edit-name">Name</label>
+                  <input type="text" name="name" class="form-control" id="edit-name" placeholder="Your Name"
+                    value="<%= profile_users.name %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="InputEmail">Email address</label>
+                  <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Your Email"
+                    value="<%= profile_users.email %>" required>
+                </div>
+                <div class="custom-file">
+                  <input type="file" accept="image/*" onchange="loadFile(event)" name="avatar" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <div class="img">
+                  <img id="output">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
+    </span>
+  <% }else{ %>
+  <span class="side-button small">
+    <!-- if friend doesn't exist then shows create friend -->
+    <% if(!user.friendships.includes(profile_users.id)){ %>
+    <a href="/users/createfriendship/<%= profile_users._id %>">
+      <button class="friends">
+        <i class="fas fa-user-friends"></i>
+        Add Friend
+      </button>
+    </a>
+    <!-- otherwise shows the option of remove friends -->
+    <% } else{ %>
+    <div class="dropdown">
+      <button type="button" id="friends" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-check"></i>
+        Friends
+        &ensp;
+        <i class="fas fa-caret-down"></i>
+      </button>
+      <button type="button">
+        <i class="far fa-comments"></i>
+        Message
+      </button>
+      <div class="dropdown-menu" aria-labelledby="friends">
+        <a href="/users/destroyfriendship/<%= profile_users._id %>" class="dropdown-item">
+          Unfriend
+        </a>
+      </div>
+    </div>
+    <% } %>
+  </span>
+  <% } %>
+  <div class="bottom-list">
+    <div class="timeline item">
+      <button onclick="showTimeline()">
+        timeline
+      </button>
+    </div>
+    <div class="about item">
+      <button onclick="showAbout()">
+        about
+      </button>
+    </div>
+    <div class="friends item">
+      <button onclick="showFriends()">
+        friends <span class="small text-muted">(<%= friendships.length %>)</span>
+      </button>
+    </div>
+    <div class="more item">
+      <button onclick="showAllUsers()">
+        more
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="user-timeline" class="tl">
+ 
+</div>
+<div id="user-about" style="display: none;">
+  No Information Available
+</div>
+<div id="user-friends" style="display: none;">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"> <i class="fas fa-user-friends"></i> Friends</h5>
+      <div class="box-size">
+        <% for(let friends of friendships){ %>
+        <p class="list-group-item">
+          <% if(friends.avatar){ %>
+          <img class="rounded-circle" width="45" height="45" src="<%= friends.avatar %>" alt="">
+          <% } else{ %>
+          <img class="rounded-circle" width="45" src='/images/no_profile.png' alt="no_profile">
+          <% } %>
+          <span style="color: black"> <%= friends.name %> </span>
+        </p>
         <% } %>
-        
-      </span>
-
-<% } %>
-
+      </div>
+    </div>
+  </div>
+</div>
+<div id="all-users" style="display: none;">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"> <i class="fas fa-users"></i></i> All Users</h5>
+      <div class="box-size">
+        <% for(u of all_users){%>
+        <p class="list-group-item">
+          <% if(u.avatar){ %>
+          <img class="rounded-circle" width="45" height="45" src="<%= u.avatar %>" alt="">
+          <% } else{ %>
+          <img class="rounded-circle" width="45" src='/images/no_profile.png' alt="">
+          <% } %>
+          <a class="ml-2" href="/users/profile/<%= u.id %>"> <%= u.name %> </a>
+        </p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function showTimeline() {
+    $('#user-timeline').css("display", "block");
+    $('#user-about').css("display", "none");
+    $('#user-friends').css("display", "none");
+    $('#all-users').css("display", "none");
+  }
+  function showAbout() {
+    $('#user-timeline').css("display", "none");
+    $('#user-about').css("display", "block");
+    $('#user-friends').css("display", "none");
+    $('#all-users').css("display", "none");
+  }
+  function showFriends() {
+    $('#user-timeline').css("display", "none");
+    $('#user-about').css("display", "none");
+    $('#user-friends').css("display", "block");
+    $('#all-users').css("display", "none");
+  }
+  function showAllUsers(){
+    $('#all-users').css("display", "block");
+    $('#user-timeline').css("display", "none");
+    $('#user-about').css("display", "none");
+    $('#user-friends').css("display", "none");
+  }
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+<!-- post comments -->
+<script src='js/home_posts_comments.js'></script>
+<script>
+    $('.postId').each(function(){
+        let self = this;
+        let postid = $(self).attr("value");
+        let newComment = new PostComments(postid)
+    })
+</script>
+<script src='js/toggle_likes.js'></script>
+<script>
+  $('.toggle-like-button').each(function () {
+    let self = this;
+    let toggleLike = new ToggleLike(self);
+  });
+</script>
+<!-- //set dates -->
+<script>
+  $('.post-date').each(function(){
+      let selfdate = $(this).text();
+     selfdate =  selfdate.trim();
+      // console.log(selfdate)
+      let time = selfdate.substring(17,21);
+      let month = selfdate.substring(4,7);
+      let date = selfdate.substring(8,10);
+      // console.log(date)
+      let newDate = date+" "+month+" at "+time
+      console.log(newDate)
+      $(this).text(newDate)
+  })
+</script>

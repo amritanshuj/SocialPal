@@ -26,16 +26,23 @@
     }
 
     #text{
-        margin-left:-40px;
+        margin-left:-30px;
         margin-top: 10px;
         padding: 2px;
         background-color: rgb(0, 211, 183);
         top: 3rem;
         color: rgb(255, 255, 255);
-        height: 1.5rem;
+        height: 2rem;
         position: absolute;
         border-radius: 5px;
+        font-weight: bold;
+        
     }
 
     
 }
+
+@media only screen and (max-width: 400px) {
+    #home-container #text {
+      font-size: xx-small;
+      height: 1.5rem; } }

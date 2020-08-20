@@ -1,13 +1,44 @@
-<h1>SocialPal | Sign Up</h1>
+<br>
+<div id="sign">
+<h4 style="color: black">&ensp;SocialPal | Sign Up</h4> 
+<div>    
+    <div class=" col-md-5">                    
+            <div>    
+                <form action="/users/create" method="POST">
+                            
+                    <div style="margin-bottom: 25px">    
+                        <input id="name" class="form-control" type="text" name="name" placeholder="Your Name" required>                                        
+                    </div>
+                        
+                    <div style="margin-bottom: 25px">
+                        <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                    </div>
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Your Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
+                    <div style="margin-bottom: 25px">
+                        <input type="password" name="password" placeholder="Your Password" required class="form-control">
+                    </div>
+                            
+                    <div style="margin-bottom: 25px">
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required class="form-control">
+                    </div>
 
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-10 controls">
+                            <input type="submit" class="btn btn-success" value="Sign Up">&ensp;
+                            <a href="/users/auth/google">Google Sign In/Sign Up</a>
+
+                        </div>
+                    </div>                             
+                </form>     
+            </div>                     
+        </div>  
+    </div>
+    
+</div>
+</div>
+
+
+

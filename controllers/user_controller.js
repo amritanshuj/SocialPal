@@ -24,7 +24,7 @@ module.exports.profile = async function (req, res) {
 
         return res.render('users', {
             title: user.name,
-            profile_user: user,
+            profile_users: user,
             posts: posts,
             friendships: friends,
             all_users: users,
