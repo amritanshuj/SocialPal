@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/user_profile.css">
+<link rel="stylesheet" href="<%= assetPath('css/user_profile.css') %>">
 
 <div class="user-profile card">
   <div class="cover-image">
@@ -9,7 +9,7 @@
     <% if(profile_users.avatar){ %>
     <img class="rounded-circle" width="140" src="<%= profile_users.avatar %>" alt="">
     <% } else{ %>
-    <img class="rounded-circle" width="140" src='/images/no_profile.png' alt="">
+    <img class="rounded-circle" width="140" src="<%= assetPath('images/no_profile.png') %>" alt="">
     <% } %>
   </div>
   <span class="name">
@@ -116,8 +116,11 @@
 </div>
 
 <div id="user-timeline" class="tl">
- 
+  <% for(post of posts){ %>
+  <%- include('posts') %>
+  <% } %>
 </div>
+
 <div id="user-about" style="display: none;">
   No Information Available
 </div>
@@ -131,7 +134,7 @@
           <% if(friends.avatar){ %>
           <img class="rounded-circle" width="45" height="45" src="<%= friends.avatar %>" alt="">
           <% } else{ %>
-          <img class="rounded-circle" width="45" src='/images/no_profile.png' alt="no_profile">
+          <img class="rounded-circle" width="45" src=<%= assetPath('images/no_profile.png') %>" alt="no_profile">
           <% } %>
           <span style="color: black"> <%= friends.name %> </span>
         </p>
@@ -150,7 +153,7 @@
           <% if(u.avatar){ %>
           <img class="rounded-circle" width="45" height="45" src="<%= u.avatar %>" alt="">
           <% } else{ %>
-          <img class="rounded-circle" width="45" src='/images/no_profile.png' alt="">
+          <img class="rounded-circle" width="45" src="<%= assetPath('images/no_profile.png') %>" alt="">
           <% } %>
           <a class="ml-2" href="/users/profile/<%= u.id %>"> <%= u.name %> </a>
         </p>
@@ -193,7 +196,7 @@
   };
 </script>
 <!-- post comments -->
-<script src='js/home_posts_comments.js'></script>
+<script src="<%= assetPath('js/home_posts_comments.js') %>"></script>
 <script>
     $('.postId').each(function(){
         let self = this;
@@ -201,7 +204,7 @@
         let newComment = new PostComments(postid)
     })
 </script>
-<script src='js/toggle_likes.js'></script>
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 <script>
   $('.toggle-like-button').each(function () {
     let self = this;

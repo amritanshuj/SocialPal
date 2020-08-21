@@ -1,0 +1,167 @@
+body a:hover {
+  text-decoration: none; }
+
+body .user-profile {
+  height: 300px;
+  width: 850px;
+  margin-left: 40px;
+  border-radius: 0px !important; }
+  body .user-profile .cover-image {
+    height: 85%;
+    width: 100%;
+    background: linear-gradient(14deg, #22c1c3 27%, #2dfd61 90%); }
+  body .user-profile .profile-picture {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border: 4px solid white;
+    border-radius: 100px; }
+    body .user-profile .profile-picture .rounded-circle {
+      width: 140px;
+      height: 140px; }
+  body .user-profile .name {
+    position: absolute;
+    bottom: 70px;
+    left: 200px;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: white;
+    font-family: sans-serif;
+    text-shadow: 6px 0px 28px #96969a;
+    text-transform: capitalize; }
+  body .user-profile .side-button {
+    position: absolute;
+    bottom: 70px;
+    right: 20px; }
+    body .user-profile .side-button button {
+      border: 1px solid rgba(0, 0, 0, 0.562);
+      color: rgba(0, 0, 0, 0.75);
+      font-weight: bold;
+      border-radius: 2px;
+      padding: 3px 10px 3px 10px; }
+    body .user-profile .side-button button:hover {
+      cursor: pointer; }
+    body .user-profile .side-button .close {
+      border: none; }
+    body .user-profile .side-button .close:focus {
+      outline: none; }
+  body .user-profile .img {
+    margin: auto;
+    margin-top: 20px;
+    width: 70%;
+    display: flex; }
+    body .user-profile .img img {
+      height: 100%;
+      width: 100%; }
+  body .user-profile .bottom-list {
+    font-family: sans-serif;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center; }
+    body .user-profile .bottom-list .item {
+      border-left: 1px solid lightgray; }
+      body .user-profile .bottom-list .item button {
+        height: 50px;
+        width: 120px;
+        text-transform: capitalize;
+        border: none;
+        background: none;
+        color: #080877;
+        font-weight: bold; }
+      body .user-profile .bottom-list .item button:hover {
+        cursor: pointer; }
+      body .user-profile .bottom-list .item button:focus {
+        outline: none; }
+    body .user-profile .bottom-list .item:hover {
+      background: rgba(0, 0, 0, 0.0666667); }
+
+body .tl {
+  display: inline-block;
+  margin-left: 20%;
+  padding: 15px;
+  width: 500px; }
+
+body #user-about {
+  padding-top: 10vh;
+  text-align: center;
+  font-size: xx-large;
+  color: rgba(163, 162, 162, 0.507);
+  font-weight: bolder; }
+
+body #user-friends {
+  padding-top: 20px;
+  margin-left: 20%;
+  width: 40vw;
+  text-transform: capitalize; }
+  body #user-friends .card-title {
+    font-size: x-large;
+    color: #4B4F56; }
+
+body #all-users {
+  padding-top: 20px;
+  margin-left: 20%;
+  width: 40vw;
+  text-transform: capitalize; }
+  body #all-users .card-title {
+    font-size: x-large;
+    color: #4B4F56; }
+
+@media only screen and (max-width: 420px) {
+  .user-profile {
+    margin-left: 2px !important;
+    width: 98vw !important;
+    height: 480px !important; }
+  body .user-profile .cover-image {
+    height: 40% !important; }
+  .profile-picture {
+    left: 30vw !important;
+    bottom: 225px !important; }
+  .name {
+    width: 95vw;
+    text-align: center;
+    left: 2vw !important;
+    bottom: 170px !important;
+    color: black !important;
+    text-shadow: none !important; }
+  .bottom-list {
+    position: absolute;
+    bottom: 5px;
+    height: 11% !important; }
+  .item {
+    height: 50px; }
+    .item button {
+      width: 25vw !important; }
+  .side-button {
+    bottom: 90px !important;
+    left: 40px !important; }
+    .side-button button {
+      width: 80vw;
+      height: 35px;
+      border: none !important;
+      color: white !important;
+      background-color: #1877F2;
+      border-radius: 20px !important; }
+    .side-button .close {
+      background: none;
+      width: 0vw;
+      height: 0px;
+      color: black !important;
+      padding-right: 27px !important; }
+    .side-button button:focus {
+      outline: none; }
+    .side-button #friends {
+      margin-bottom: 5px; }
+  .tl {
+    margin: 0px !important;
+    width: 100vw !important;
+    padding: 5px !important; }
+  #user-friends {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    text-transform: capitalize; }
+  #all-users {
+    margin-left: 0 !important;
+    width: 100vw !important;
+    text-transform: capitalize; } }

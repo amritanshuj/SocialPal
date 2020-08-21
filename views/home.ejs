@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
+<link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 
 <div id="home-container" class="container-fluid">
     <% if(locals.user){ %>
@@ -12,7 +12,7 @@
                 <% if(locals.user.avatar){ %>
                 <img class="rounded-circle mx-5" width="70" height="70" src="<%= locals.user.avatar %>" alt="">
                 <% } else{ %>
-                <img class="rounded-circle mx-5" width="70" src="" alt="add image">
+                <img class="rounded-circle mx-5" width="70" src="<%= assetPath('images/no_profile.png') %>" alt="add image">
                 <% } %>
             </div>
             <div class="card-body text-capitalize">
@@ -67,7 +67,7 @@
                         <% if(friends.avatar){ %>
                         <img class="rounded-circle" width="45" height="45" src="<%= friends.avatar %>" alt="">
                         <% } else{ %>
-                        <img class="rounded-circle" width="45" src="" alt="Add Img">
+                        <img class="rounded-circle" width="45" src="<%= assetPath('images/no_profile.png') %>" alt="Add Img">
                         <% } %>
                         <a style="font-size: smaller;" class="ml-2" href="/users/profile/<%= friends.id %>"> <%= friends.name %> </a>
                     </p>
@@ -83,7 +83,7 @@
                         <% if(u.avatar){ %>
                         <img class="rounded-circle" width="45" height="45" src="<%= u.avatar %>" alt="">
                         <% } else{ %>
-                        <img class="rounded-circle" width="45" src="" alt="Add Img">
+                        <img class="rounded-circle" width="45" src="<%= assetPath('images/no_profile.png') %>" alt="Add Img">
                         <% } %>
                         <a style="font-size: smaller;" class="ml-2" href="/users/profile/<%= u.id %>"> <%= u.name %></a>
                     </p>
@@ -98,7 +98,7 @@
     <% } else{ %>
         <br>
         <div id="bg">
-            <img id="cover" src="images/cover_1.jpg" alt="Cant load">
+            <img id="cover" src="<%= assetPath('images/cover_1.jpg') %>" alt="Cant load">
         </div>
         <div id="text">
         <p>Welcome to SocialPal! Sign In/Sign Up to continue.</p>
@@ -107,11 +107,11 @@
     
 
 
-<script src="/js/home_post_comments.js" ></script>
-<script src="/js/home_posts.js"></script>
+<script src="<%= assetPath('js/home_post_comments.js') %>" ></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
 
 <!-- import the script file for toggle likes, also run it over for the already present posts and comments on the page --> 
-<script src="js/toggle_likes.js"></script>
+<script src="<%= assetPath('js/toggle_likes.js') %>s"></script>
 <script>
     $('.toggle-like-button').each(function(){
         let self = this;
@@ -119,7 +119,7 @@
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>s"></script>
 <% if(locals.user){ %>
 <script>
     new chatEngine('user-chat-box', '<%= locals.user.name %>', '<%= locals.user.email %>')
